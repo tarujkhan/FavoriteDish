@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_09_10_185930) do
 
   create_table "dishes", force: :cascade do |t|
     t.string "name"
+    t.string "rating"
     t.integer "foodlover_id"
     t.integer "cuisine_id"
     t.datetime "created_at", precision: 6, null: false
