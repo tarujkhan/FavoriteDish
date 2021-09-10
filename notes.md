@@ -29,7 +29,7 @@ Create my views
 Step 7
 Incorporate OmniAuth
 There will be a has many relationship with
-the user has many blogs
+the food lover has many dishes
 Only a logged in user can edit or delete a 
 blog
 For this I will use a helper method
@@ -38,3 +38,5 @@ I will use OmniAuth
 There will be new user, user log in and 
 user log out functionality
 There will be password digest
+
+rails s -p 3001
