@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#omniauth'
   get '/welcome/home', to: 'welcome#home'
   resources :dishes
-  resources :cuisines
-  resources :foodlovers
+  resources :foodlovers do
+    resources :cuisines
   resources :users
   # resources :sessions
   # get 'auth/github/callback' => 'sessions#create'
