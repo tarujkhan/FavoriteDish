@@ -9,6 +9,22 @@ class SessionsController < ApplicationController
     render 'welcome/home'
 end
 
+def omniauth
+    @user = User.from_omniauth(auth)
+    if @user.valid?
+        session[:id] = @user.id 
+        redirect_to @user
+    else 
+        render :new 
+    end
+end
+
+def destroy
+    session.clear
+    redirect_to '/new'
+end
+end
+
 def auth
     request.env['omniauth.auth'] 
 end 
