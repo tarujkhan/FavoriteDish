@@ -11,11 +11,13 @@ end
 
 def omniauth
     @user = User.from_omniauth(auth)
+    byebug
     if @user.valid?
         session[:id] = @user.id 
         redirect_to @user
     else 
-        render :new 
+    #    render :new 
+    redirect_to '/'
     end
 end
 
