@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#omniauth'
   get '/welcome/home', to: 'welcome#home'
   resources :foodlovers
-  resources :dishes do
-   resources :cuisines
+  resources :cuisines do
+    resources :dishes
   resources :users
   end
 
