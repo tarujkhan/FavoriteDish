@@ -32,3 +32,4 @@ private
 def new_user
     params.require(:user).permit(:name, :email, :password)
 end 
+end

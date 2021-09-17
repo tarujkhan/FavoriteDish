@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   # resources :cuisines do
   #   resources :dishes
   resources :users do 
+    resources :dishes
     resources :cuisines
   end
-  resources :dishes
+  
   end
 
   # resources :sessions
