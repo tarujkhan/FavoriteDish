@@ -3,9 +3,6 @@ class CreateDishes < ActiveRecord::Migration[6.0]
     create_table :dishes do |t|
       t.string :name
       t.string :rating
-      t.integer :foodlover_id
-      t.integer :cuisine_id
-
       t.timestamps
     end
   end

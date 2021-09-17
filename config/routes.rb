@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   # get '/welcome' => 'welcome#home'
   get 'auth/:provider/callback', to: 'sessions#omniauth'
   get '/welcome/home', to: 'welcome#home'
-  resources :foodlovers
-  resources :cuisines do
-    resources :dishes
-  resources :users
+  # resources :foodlovers
+  # resources :cuisines do
+  #   resources :dishes
+  resources :users do 
+    resources :cuisines
+  end
+  resources :dishes
   end
 
   # resources :sessions
   # get 'auth/github/callback' => 'sessions#create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
-end
+
