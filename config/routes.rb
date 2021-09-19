@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
   get '/', to: 'welcome#home'
-  # root 'users#home'
-  # get '/welcome' => 'welcome#home'
-  get 'auth/omniauth', :as => 'omniauth'
-  get 'auth/:provider/callback', to: 'sessions#omniauth'
+  get 'sessions/omniauth', :as => 'omniauth'
+  get 'sessions/:provider/callback', to: 'sessions#create'
   get '/welcome/home', to: 'welcome#home'
-  # resources :foodlovers
-  # resources :cuisines do
-  #   resources :dishes
-  resources :users do 
+    resources :users do 
     resources :dishes
     resources :cuisines
   end
