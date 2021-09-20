@@ -4,14 +4,10 @@
   <h2>Github UID: <%= @user.uid %></h2>
   
   <% else %>
-# <%= button_to('Log in with Github!', '/auth/github', method: :post) %>
-<%= link_to 'Log in with Github', :omniauth %>
-# button will send a post request
-# for the forgery protection to work we need to change to post request
-#  for the authenticity token 
+  <%= button_to "Log in with Github", auth_github_callback_path %>
+# # <%= button_to('Log in with Github!', '/auth/github', method: :post) %>
+# <%= link_to 'Log in with Github', "/auth/github" %>
+# # button will send a post request
+# # for the forgery protection to work we need to change to post request
+# #  for the authenticity token 
   <% end %>
-
-
-  # current_user = session[:user_id]
-
-  # <%= link_to('Log in without Github', '/user/home', method: :get) %>

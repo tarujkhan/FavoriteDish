@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  root 'welcome#home'
+  get 'auth/github/callback', to: "sessions#create"
   get '/', to: 'welcome#home'
-  get 'sessions/omniauth', :as => 'omniauth'
-  get 'sessions/:provider/callback', to: 'sessions#create'
+  # get 'sessions/omniauth', :as => 'omniauth'
+  # get 'sessions/:provider/callback', to: 'sessions#create'
   get '/welcome/home', to: 'welcome#home'
     resources :users do 
     resources :dishes
