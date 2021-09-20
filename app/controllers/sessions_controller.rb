@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
         u.email = auth['info']['email']
     end 
     
-    session[:user_id] = @user.id
+    session[:user_id] = user.uid
     render 'welcome/home'
 end
 
@@ -25,8 +25,15 @@ def destroy
     session.clear
     redirect_to '/new'
 end
-end
+
 
 def auth
     request.env['omniauth.auth'] 
 end 
+
+private
+def authorize_params
+    request.env.fetch('omniauth.auth')
+  end
+
+end

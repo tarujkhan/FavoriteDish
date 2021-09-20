@@ -58,3 +58,4 @@ gem 'dotenv-rails'
 # gem 'devise', github: 'heartcombo/devise', branch: 'ca-omniauth-2'
 # gem "omniauth-rails_csrf_protection"
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem "active_type", "= 1.3.2"
