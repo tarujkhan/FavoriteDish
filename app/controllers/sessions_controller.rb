@@ -1,21 +1,22 @@
 class SessionsController < ApplicationController
     def create
-        if auth
-        else 
-    # @user = User.find_or_create_by(uid: auth['uid']) do |u|
-    #     u.name = auth['info']['name']
-    #     u.email = auth['info']['email']
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
+        u.name = auth['info']['name']
+        u.email = auth['info']['email']
     end 
     
-    # session[:user_id] = user.uid
-    # render 'welcome/home'
+    session[:user_id] = @user.uid
+    render 'welcome/home'
 end
 
 def omniauth
     @user = User.from_omniauth(auth)
-    # byebug
+
+    @user.save
+     #byebug
     if @user.valid?
-        session[:id] = @user.id 
+        session[:user_id] = @user.id 
+        #  byebug
         redirect_to @user
     else 
     #    render :new 
@@ -37,5 +38,4 @@ private
 def authorize_params
     request.env.fetch('omniauth.auth')
   end
-
 end

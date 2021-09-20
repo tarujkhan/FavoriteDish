@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#home'
-  get 'auth/github/callback', to: "sessions#create"
+  # get 'auth/github/callback', to: "sessions#create"
+  get 'auth/github/callback', to: "sessions#omniauth"
   get '/', to: 'welcome#home'
   # get 'sessions/omniauth', :as => 'omniauth'
   # get 'sessions/:provider/callback', to: 'sessions#create'
