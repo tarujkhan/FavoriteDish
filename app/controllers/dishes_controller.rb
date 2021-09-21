@@ -6,16 +6,32 @@ class DishesController < ApplicationController
         # link_to("Click here", users_dishes_path(@dishes))
     end 
 
+    def show
+        @dish = Dish.find_by(params[:id])
+    end
+
     def new
+        @dish = Dish.new
     end
 
     def create
+        @dish = Dish.create(dishes_params)
+        if @dish.valid?
+            redirect_to @dish
+        else 
+            render :new
     end
 
     def update
+        @dish = Dish.update(dishes_params)
+        if @dish.valid?
+            redirect_to @dish
+        else 
+            render :update
     end
 
     def delete
+        @dish.destroy
     end
 
     private
