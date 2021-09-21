@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     end 
     
     session[:user_id] = @user.uid
+    byebug
     render 'welcome/home'
 end
 

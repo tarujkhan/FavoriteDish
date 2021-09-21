@@ -20,6 +20,7 @@ class DishesController < ApplicationController
 
     private
     def dishes_params
+        params.require(:dish).permit(:name, :rating)
     end
 
 end
