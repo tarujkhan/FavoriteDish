@@ -25,6 +25,12 @@ def omniauth
     end
 end
 
+def log_in
+end
+
+def log_out
+end
+
 def destroy
     session.clear
     redirect_to '/new'

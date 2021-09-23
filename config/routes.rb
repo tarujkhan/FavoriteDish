@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#home'
+  get "/users", to: "users#sign_in"
+  post "/users", to: "users#sign_in"
+  get "/users", to: "users#register"
+  post "/users", to: "users#register"
+  get "sessions", to: "sessions#log_in"
+  post "sessions" to: "sessions#log_in"
   # get 'auth/github/callback', to: "sessions#create"
   get 'auth/github/callback', to: "sessions#omniauth"
   get '/', to: 'welcome#home'
