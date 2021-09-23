@@ -38,3 +38,4 @@ end
 # need sign and sign out here and log in and log out in sessions controller 
 # get and post will their own routes - get sign in and post sign in
 # helper methods should not be used for all methods like index
+# helper methods should be inside the application controller
