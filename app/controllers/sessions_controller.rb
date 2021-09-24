@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+    def new
+    end
+    
+    
     def create
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
         u.name = auth['info']['name']
@@ -25,15 +29,10 @@ def omniauth
     end
 end
 
-def log_in
-end
-
-def log_out
-end
 
 def destroy
     session.clear
-    redirect_to '/new'
+    redirect_to '/login'
 end
 
 
