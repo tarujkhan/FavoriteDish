@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  root 'sessions#home'
+  get '/', to: 'sessions#home'
   get "/signup", to: "users#new"
   post "/signup", to: "users#new"
-  get "login", to: "sessions#new"
-  post "login", to: "sessions#create"
+  get "login", to: "sessions#login"
+  post "login", to: "sessions#login"
   delete "logout", to: "sessions#destroy"
   # get 'auth/github/callback', to: "sessions#create"
-  get 'auth/github/callback', to: "sessions#omniauth"
+  get '/auth/github/callback', to: "sessions#omniauth"
   # get '/', to: 'welcome#home'
   # get 'sessions/omniauth', :as => 'omniauth'
   # get 'sessions/:provider/callback', to: 'sessions#create'
