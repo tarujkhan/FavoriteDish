@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     
     session[:user_id] = @user.uid
     # byebug
-    render :home
+    redirect_to users_path
     end
 
     def omniauth
