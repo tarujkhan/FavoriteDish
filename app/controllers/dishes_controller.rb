@@ -21,7 +21,7 @@ class DishesController < ApplicationController
         else 
             render :new
     end
-
+end
     def update
         @dish = Dish.update(dishes_params)
         if @dish.valid?
@@ -29,7 +29,7 @@ class DishesController < ApplicationController
         else 
             render :update
     end
-
+end
     def delete
         @dish.destroy
     end
