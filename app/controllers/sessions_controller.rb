@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
     
     session[:user_id] = @user.uid
     #  byebug
-    redirect_to users_path
+    redirect_to users_path(@user)
    end
 
     def omniauth
@@ -31,8 +31,8 @@ class SessionsController < ApplicationController
      #byebug
     if @user.valid?
         session[:user_id] = @user.id 
-        #  byebug
-        redirect_to @user
+         #byebug
+        redirect_to user_path(@user)
     else 
     #    render :new 
     redirect_to '/'
