@@ -6,7 +6,7 @@ def index
     #byebug
 end
 
-def sign_in
+def signup
 end
 
 def sign_out
