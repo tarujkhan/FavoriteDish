@@ -1,1 +1,7 @@
 </h1>Enter your favorite dish and cuisine here</h1>
+
+<%= form_for @user.dish do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.submit %>
+    <% end %>

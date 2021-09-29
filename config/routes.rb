@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :users do 
     resources :dishes
     resources :cuisines
+    resources :dishes
   end
   
   end
