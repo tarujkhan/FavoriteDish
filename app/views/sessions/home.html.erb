@@ -6,7 +6,24 @@
   
   <% else %>
   <%= button_to "Log in with Github", "/auth/github" %>
-# # button will send a post request
-# # for the forgery protection to work we need to change to post request
-# #  for the authenticity token 
+  <h1>New User Register</h1>
+  <%= form_tag '/login' do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    <%= submit_tag "Register" %>
+    <h1>Login without Github</h1>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
   <% end %>
+
+<% end %>
+
+
+
+  

@@ -12,11 +12,10 @@ Rails.application.routes.draw do
   # get 'sessions/:provider/callback', to: 'sessions#create'
   # get '/welcome/home', to: 'welcome#home'
     resources :users do 
-    resources :dishes
+    resources :dishes, only: [:show, :edit, :delete]
     resources :cuisines
-    resources :dishes
   end
-  
+    resources :dishes, only: [:new, :create, :index]
   end
 
   # resources :sessions
