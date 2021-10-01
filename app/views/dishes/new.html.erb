@@ -3,5 +3,9 @@
 <%= form_for @dish do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
+    <%= f.label :rating %>
+    <%= f.text_field :rating %>
+    <%= f.label :cuisine %>
+    <%= f.text_field :cuisine %>
     <%= f.submit %>
     <% end %>

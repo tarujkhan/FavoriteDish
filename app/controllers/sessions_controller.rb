@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
     if @user.valid?
         session[:user_id] = @user.id 
          #byebug
-        redirect_to user_path(@user)
+        redirect_to users_path(@user)
     else 
     #    render :new 
     redirect_to '/'

@@ -17,7 +17,12 @@ class DishesController < ApplicationController
     end
 
     def create
+       
+        dish = Dish.new(user_id: current_user.id, name: params[:dish][:name], rating: params[:dish][:rating])
+        # byebug
+        # @dish.user_id = current_user.id - hou do you set the cuisine id to user id
         @dish = Dish.create(dishes_params)
+        # byebug
         if @dish.valid?
             redirect_to @dish
         else 
@@ -38,7 +43,7 @@ end
 
     private
     def dishes_params
-        params.require(:dish).permit(:name, :rating)
+        params.require(:dish).permit(:name, :rating, :user_id)
     end
 
 end
