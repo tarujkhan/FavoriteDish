@@ -7,7 +7,12 @@ class DishesController < ApplicationController
     end 
 
     def show
-        @dish = Dish.find_by(params[:id])
+        @user =  User.find(current_user.id)
+        @dish = Dish.find(params[:dish][:id])
+
+        # byebug
+        # dish = Dish.find_by(params[:id])
+        # @current_user.dishes = dish
     end
 
     def new
@@ -17,14 +22,19 @@ class DishesController < ApplicationController
     end
 
     def create
-       
-        dish = Dish.new(user_id: current_user.id, name: params[:dish][:name], rating: params[:dish][:rating])
+        # byebug
+        cuisine = Cuisine.create(name: params[:dish][:name])
+        @dish = Dish.new(user_id: current_user.id, name: params[:dish][:name], rating: params[:dish][:rating], 
+        cuisine_id: cuisine.id)
         # byebug
         # @dish.user_id = current_user.id - hou do you set the cuisine id to user id
-        @dish = Dish.create(dishes_params)
+        # @dish = Dish.create(dishes_params)
+        #  byebug  - to save dish you need to save cuisine. in order to create cuisine we created a new instance and save it.
+        # cuisine = Cuisine.new(name: params[:dish][:cuisine_id])
         # byebug
-        if @dish.valid?
-            redirect_to @dish
+        if @dish.save
+            # byebug
+            redirect_to user_dish_path(@dish, current_user.id)
         else 
             render :new
     end
@@ -43,7 +53,8 @@ end
 
     private
     def dishes_params
-        params.require(:dish).permit(:name, :rating, :user_id)
+        params.require(:dish).permit(:name, :rating, :user_id, cuisine_attributes: [:id])
     end
 
 end
+ 
