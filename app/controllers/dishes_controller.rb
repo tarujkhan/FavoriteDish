@@ -6,11 +6,17 @@ class DishesController < ApplicationController
         # link_to("Click here", users_dishes_path(@dishes))
     end 
 
+    def sort_a_to_z
+        @dishes = Dish.sort_a_to_z
+        render :index
+    end
+
     def show
+        byebug
         @user =  User.find(current_user.id)
         @dish = Dish.find(params[:dish][:id])
 
-        # byebug
+      
         # dish = Dish.find_by(params[:id])
         # @current_user.dishes = dish
     end
@@ -23,9 +29,9 @@ class DishesController < ApplicationController
 
     def create
         # byebug
-        cuisine = Cuisine.create(name: params[:dish][:name])
+        cuisine = Cuisine.create(name: params[:cuisine])
         @dish = Dish.new(user_id: current_user.id, name: params[:dish][:name], rating: params[:dish][:rating], 
-        cuisine_id: cuisine.id)
+        cuisine: params[:cuisine], cuisine_id: cuisine.id)
         # byebug
         # @dish.user_id = current_user.id - hou do you set the cuisine id to user id
         # @dish = Dish.create(dishes_params)
@@ -33,7 +39,7 @@ class DishesController < ApplicationController
         # cuisine = Cuisine.new(name: params[:dish][:cuisine_id])
         # byebug
         if @dish.save
-            # byebug
+            byebug
             redirect_to user_dish_path(@dish, current_user.id)
         else 
             render :new
@@ -53,7 +59,7 @@ end
 
     private
     def dishes_params
-        params.require(:dish).permit(:name, :rating, :user_id, cuisine_attributes: [:id])
+        params.require(:dish).permit(:name, :rating, :user_id, :cuisine, cuisine_attributes: [:id])
     end
 
 end
