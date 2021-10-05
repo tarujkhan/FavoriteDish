@@ -12,7 +12,7 @@ class DishesController < ApplicationController
     # end
 
     def show
-        # byebug
+        byebug
         @user =  User.find(current_user.id)
         @dish = Dish.find(params[:dish][:id])
           
@@ -20,7 +20,7 @@ class DishesController < ApplicationController
         # @current_user.dishes = dish
     end
 
-    def new
+    def new 
         # @user = User.find(params[:user_id])
         @dish = Dish.new
         # byebug
@@ -29,8 +29,9 @@ class DishesController < ApplicationController
     def create
         # byebug
         cuisine = Cuisine.create(name: params[:cuisine])
-        @dish = Dish.new(user_id: current_user.id, name: params[:dish][:name], rating: params[:dish][:rating], 
-        cuisine: params[:cuisine], cuisine_id: cuisine.id)
+        # @dish = Dish.create!(dishes_params(cuisine.id, current_user.id))
+        @dish = Dish.new(dishes_params(user_id: current_user.id, name: params[:dish][:name], rating: params[:dish][:rating], 
+        cuisine: params[:cuisine], cuisine_id: cuisine.id))
         # byebug
         # @dish.user_id = current_user.id - hou do you set the cuisine id to user id
         # @dish = Dish.create(dishes_params)
@@ -46,10 +47,10 @@ class DishesController < ApplicationController
 end
     def update
         @dish = Dish.update(dishes_params)
-        if @dish.valid?
+        if @dish.save
             redirect_to @dish
         else 
-            render :update
+            render :edit
     end
 end
     def delete
@@ -57,8 +58,9 @@ end
     end
 
     private
-    def dishes_params
-        params.require(:dish).permit(:name, :rating, :user_id, :cuisine, cuisine_attributes: [:id])
+    def dishes_params(*args)
+        # params.require(:dish).permit(:name, :rating, :user_id, cuisine_attributes: [:id])
+        params.require(:dish).permit(*args)
     end
 
 end

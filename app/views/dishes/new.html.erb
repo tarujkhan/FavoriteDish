@@ -5,7 +5,8 @@
     <%= f.text_field :name %>
     <%= f.label :rating %>
     <%= f.text_field :rating %>
-    <%= f.label :cuisine %>
-    <%= f.text_field :cuisine %>
+    <%= f.fields_for :cuisine %>
+        <%= f.label :cuisine %>
+        <%= f.text_field :cuisine %><br>
     <%= f.submit %>
     <% end %>
