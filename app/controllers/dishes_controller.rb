@@ -6,17 +6,16 @@ class DishesController < ApplicationController
         # link_to("Click here", users_dishes_path(@dishes))
     end 
 
-    def sort_a_to_z
-        @dishes = Dish.sort_a_to_z
-        render :index
-    end
+    # def sort_a_to_z
+    #     @dishes = Dish.sort_a_to_z
+    #     render :index
+    # end
 
     def show
-        byebug
+        # byebug
         @user =  User.find(current_user.id)
         @dish = Dish.find(params[:dish][:id])
-
-      
+          
         # dish = Dish.find_by(params[:id])
         # @current_user.dishes = dish
     end
@@ -24,7 +23,7 @@ class DishesController < ApplicationController
     def new
         # @user = User.find(params[:user_id])
         @dish = Dish.new
-        
+        # byebug
     end
 
     def create
@@ -39,7 +38,7 @@ class DishesController < ApplicationController
         # cuisine = Cuisine.new(name: params[:dish][:cuisine_id])
         # byebug
         if @dish.save
-            byebug
+            # byebug
             redirect_to user_dish_path(@dish, current_user.id)
         else 
             render :new
