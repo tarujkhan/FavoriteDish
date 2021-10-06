@@ -12,7 +12,7 @@ class DishesController < ApplicationController
     # end
 
     def show
-        byebug
+        # byebug
         @user =  User.find(current_user.id)
         @dish = Dish.find(params[:dish][:id])
           
@@ -58,9 +58,9 @@ end
     end
 
     private
-    def dishes_params(*args)
-        # params.require(:dish).permit(:name, :rating, :user_id, cuisine_attributes: [:id])
-        params.require(:dish).permit(*args)
+    def dishes_params
+        params.require(:dish).permit(:name, :rating, :user_id, :cuisine_attributes, :cuisine_id)
+        # params.require(:dish).permit(*args)
     end
 
 end
