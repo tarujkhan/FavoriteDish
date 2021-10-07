@@ -1,13 +1,7 @@
 </h1>Enter your favorite dish and cuisine here</h1>
 
 <%= form_for @dish do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
-    <%= f.fields_for :cuisine %>
-        <%= f.label :cuisine %>
-        <%= f.text_field :cuisine %><br>
+    <%= f.collection_select :cuisine_id, Cuisine.all, :id, :name %>
     <%= f.submit %>
     <% end %>
 

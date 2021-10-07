@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+cuisines = Cuisine.create([{name: 'American'}, {name: 'Chinese'}, {name: 'Japanese'}, 
+{name: 'Canadian'}, {name: 'Italian'}, {name: "Russian"}, {name: 'Greek'}, {name: 'French'},
+{name: 'German'}, {name: 'Scottish'}, {name: 'Dutch'}, {name: 'Finnish'}, {name: 'South American'}
+{name: 'Spanish'}, {name: 'Moroccan'}, {name: 'Middle Eastern'}])
+cuisines = Cuisine.all
+cuisines.destroy_all
