@@ -21,7 +21,7 @@ class DishesController < ApplicationController
     end
 
     def new 
-        # @user = User.find(params[:user_id])
+        @user = User.find(params[:id])
         @dish = Dish.new
         # byebug
     end
@@ -33,7 +33,8 @@ class DishesController < ApplicationController
         # @dish = Dish.new(dishes_params(user_id: current_user.id, name: params[:dish][:name], rating: params[:dish][:rating], 
         # cuisine: params[:cuisine], cuisine_id: cuisine.id))
         @dish = Dish.new(dishes_params)
-        @dish.user_id = current_user.id 
+        @dish.user_id = current_user.id
+    
         # - hou do you set the cuisine id to user id
         
         #  byebug  - to save dish you need to save cuisine. in order to create cuisine we created a new instance and save it.

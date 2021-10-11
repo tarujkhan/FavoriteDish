@@ -1,6 +1,6 @@
 class Dish < ApplicationRecord
     belongs_to :user
-    belongs_to :cuisine, dependent: destroy
+    belongs_to :cuisine, dependent: :destroy
     accepts_nested_attributes_for :cuisine 
     accepts_nested_attributes_for :user
     

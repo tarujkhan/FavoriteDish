@@ -15,6 +15,7 @@ end
 
 def show
     @user = User.find(params[:id])
+    # byebug
     # @user = current_user
 end
 

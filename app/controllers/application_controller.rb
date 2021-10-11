@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 helper_method :current_user
 helper_method :logged_in?
 helper_method :redirect_if_not_logged_in
+skip_before_action :verify_authenticity_token
 
 
     def current_user
@@ -17,3 +18,6 @@ helper_method :redirect_if_not_logged_in
         redirect_to login_path if !logged_in?
     end
 end
+
+
+  
