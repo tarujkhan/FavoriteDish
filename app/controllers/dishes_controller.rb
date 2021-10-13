@@ -21,7 +21,7 @@ class DishesController < ApplicationController
     end
 
     def new 
-        @user = User.find(params[:id])
+        # @user = User.find(params[:id])
         @dish = Dish.new
         # byebug
     end

@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    # skip_before_action :verify_authenticity_token
     # skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :welcome]
     def new
     end
@@ -28,7 +29,7 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(auth)
 
     @user.save
-     #byebug
+    # byebug
     if @user.valid?
         session[:user_id] = @user.id 
          #byebug
@@ -40,7 +41,7 @@ class SessionsController < ApplicationController
 end
 
     def login
-        @user = User.find[params[:id]]
+        @user = User.find(current_user)
     end 
 
 def destroy
