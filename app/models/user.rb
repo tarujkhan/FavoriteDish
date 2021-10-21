@@ -17,7 +17,7 @@ def self.from_omniauth(auth)
     self.find_or_create_by(uid: auth["uid"]) do |u|
         #  byebug
         u.email = auth['info']['email']
-        u.password = SecureRandom.hex(20)
+        u.password_digest = SecureRandom.hex(20)
         u.name = auth['info']['nickname'].downcase.gsub(" ", "_")
         # u.email = "#{u.name}@github.com"
       end

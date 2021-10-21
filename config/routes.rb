@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get '/', to: 'sessions#home'
   get "/signup", to: "users#new"
   post "/signup", to: "users#new"
-  get "login", to: "sessions#login"
-  post "login", to: "sessions#login"
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   # get 'auth/github/callback', to: "sessions#create"
   get '/auth/github/callback', to: "sessions#omniauth"
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # get 'sessions/:provider/callback', to: 'sessions#create'
   # get '/welcome/home', to: 'welcome#home'
     resources :users do 
-    resources :dishes, only: [:show, :edit, :delete]
+    resources :dishes, only: [:index, :show, :edit, :delete]
     resources :cuisines
   end
     resources :dishes, only: [:new, :create, :index]

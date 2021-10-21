@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    # skip_before_action :verify_authenticity_token
+    skip_before_action :verify_authenticity_token
     # skip_before_action :redirect_if_not_logged_in, only: [:new, :create, :welcome]
     def new
     end
@@ -14,16 +14,21 @@ class SessionsController < ApplicationController
     end
     
     def create
-    @user = User.find_or_create_by(uid: auth['uid']) do |u|
-        u.name = auth['info']['name']
-        u.email = auth['info']['email']
-        u.uid = auth['info']['uid']
-        end 
-    
+        # byebug
+    @user = User.find_by(email: params[:session][:email])
+        # u.name = auth['info']['name']
+        # u.email = auth['info']['email']
+        # u.uid = auth['info']['uid']
+        byebug
+        if @user && @user.authenticate(params[:session][:password])  
     session[:user_id] = @user.uid
     #  byebug
-    redirect_to users_path(@user)
+    redirect_to user_dishes_path
+        else 
+    flash[:message] = "User is not authenticated"
+    render :new
    end
+end
 
     def omniauth
     @user = User.from_omniauth(auth)
@@ -38,15 +43,19 @@ class SessionsController < ApplicationController
     #    render :new 
     redirect_to '/'
     end
-end
+    end
+    
+    def new
+        @user = User.new
+    end 
 
     def login
-        @user = User.find(current_user)
+       @user = User.find(session[:user_id])
     end 
 
 def destroy
     session.clear
-    redirect_to '/login'
+    redirect_to '/'
 end
 
 
